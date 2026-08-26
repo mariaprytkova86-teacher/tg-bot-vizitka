@@ -27,6 +27,10 @@ from telegram.ext import (
 # =========================================================
 
 BASE_DIR = Path(__file__).resolve().parent
+DATA_DIR = Path("/app/data")
+if not DATA_DIR.exists():
+    DATA_DIR = BASE_DIR / "data"
+DATA_DIR.mkdir(parents=True, exist_ok=True)
 
 load_dotenv(BASE_DIR / ".env")
 
@@ -39,8 +43,8 @@ OWNER_ID = 1100657461
 TEACHER_USERNAME = "@MariaPrytkova86"
 
 # Файлы
-SLOTS_FILE = BASE_DIR / "slots.json"
-BOOKINGS_FILE = BASE_DIR / "bookings.json"
+SLOTS_FILE = DATA_DIR / "slots.json"
+BOOKINGS_FILE = DATA_DIR / "bookings.json"
 
 # Картинки
 WELCOME_IMAGE = BASE_DIR / "assets" / "welcome.png"
